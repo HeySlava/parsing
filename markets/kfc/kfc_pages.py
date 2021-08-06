@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import json
 
-driver = webdriver.Chrome(executable_path=r"/home/vyacheslav/parsing/chromedriver")
+driver = webdriver.Chrome(executable_path=r"/usr/bin/chromedirver")
 
 driver.set_window_size(1500, 1000)
 
