@@ -1,7 +1,8 @@
 vk/
-.idea
+.idea/
 chromedriver
-__pychashe__/
+__pycashe__/
 data/
 89307984123_cookies
 vk_auth.py
+
