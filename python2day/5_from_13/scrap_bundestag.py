@@ -15,8 +15,9 @@ for i in range(0, 740, 20):
     for person in persons:
         persons_link.append(person.get('href'))
     time.sleep(1)
+    print(i)
 
 with open('candidate_links.txt', 'a') as f:
-    for person_link in persons_link:
+    for person in persons_link:
         f.write(f'{person}\n')
 
