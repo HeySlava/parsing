@@ -61,12 +61,3 @@ for f in files:
 with open('data.json', 'w') as json_file:
     json.dump(all_data, json_file, indent=4)
 
-
-
-
-
-
-
-
-
-
