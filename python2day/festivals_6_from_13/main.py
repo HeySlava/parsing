@@ -6,9 +6,9 @@ import time
 import os
 
 
-# headers = {
-#         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36"
-#         }
+headers = {
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36"
+        }
 
 # for i in range(0, 168, 24):
 #     url = f'https://www.skiddle.com/festivals/search/?ajaxing=1&sort=0&fest_name=&from_date=10%20Aug%202021&to_date=&maxprice=500&o={i}&bannertitle=August'
@@ -34,21 +34,24 @@ for page in files:
             [domen + l['href'] for l in soup.select('.card a')]
             )
 
+for url in set(festival_hrefs):
+    req = requests.get(url=url, headers=headers)
 
+    try:
+        soup = BeautifulSoup(req.text, 'lxml')
 
+        festival_name = soup.select_one('div h1').text.strip()
+        festival_date = soup.select_one('div h3').text.strip()
+        festival_accommodation = domen + soup\
+                .select_one('.p-13pt a.tc-white')['href'].strip()
 
+        print(festival_name, festival_date, festival_accommodation)
 
+    except Exception as ex:
+        print(ex)
 
-
-
-
-
-
-
-
-
-
-
+    # finally:
+    break
 
 
 
