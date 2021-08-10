@@ -45,7 +45,24 @@ for url in set(festival_hrefs):
         festival_accommodation = domen + soup\
                 .select_one('.p-13pt a.tc-white')['href'].strip()
 
-        print(festival_name, festival_date, festival_accommodation)
+        req = requests.get(url=festival_accommodation, headers=headers)
+        soup = BeautifulSoup(req.text, 'lxml')
+
+        additional_info = soup\
+                .select('.margin-bottom-20 p.no-top-margin')
+        add_info_dict = {}
+        for i in additional_info:
+            k_v = i.text.split(':')
+            if len(k_v) != 2:
+                k = k_v[0].strip()
+                v = ''.join(k_v[1:]).strip()
+            else:
+                k = k_v[0].strip()
+                v = k_v[1].strip()
+            add_info_dict[k] = v
+
+        print(add_info_dict)
+
 
     except Exception as ex:
         print(ex)
