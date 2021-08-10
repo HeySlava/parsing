@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import time
+import os
 
 # persons_link = []
 # for i in range(0, 740, 20):
@@ -24,17 +25,33 @@ import time
 with open('candidate_links.txt') as f:
     links = [link.strip() for link in f.readlines()]
 
-count = 0
-for url in links:
-    q = requests.get(url)
-    # soup = BeautifulSoup(q.content, 'lxml')
+# count = 0
+# for url in links:
 
-    # name = soup.select_one('.bt-biografie-beruf p').text
+    # q = requests.get(url)
+    # count += 1
+    # with open(f'data/{count}', 'w') as f:
+    #     f.write(q.text)
 
-    count += 1
-    with open(f'data/{count}', 'w') as f:
-        f.write(q.text)
+    # print(f"Done {count} from {len(links)}")
+    # time.sleep(0.5)
 
-    print(f"Done {count} from {len(links)}")
-    time.sleep(0.5)
+files = os.listdir('data/')
+for f in files:
+    with open(f'data/{f}') as file:
+        soup = BeautifulSoup(f.read(), 'lxml')
+    print(soup)
+    break
+
+
+
+
+
+
+
+
+
+
+
+
 
