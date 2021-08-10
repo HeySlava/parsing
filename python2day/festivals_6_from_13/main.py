@@ -34,6 +34,8 @@ for page in files:
             [domen + l['href'] for l in soup.select('.card a')]
             )
 
+fest_result = []
+count = 0
 for url in set(festival_hrefs):
     req = requests.get(url=url, headers=headers)
 
@@ -55,20 +57,28 @@ for url in set(festival_hrefs):
             k_v = i.text.split(':')
             if len(k_v) != 2:
                 k = k_v[0].strip()
-                v = ''.join(k_v[1:]).strip()
+                v = ':'.join(k_v[1:]).strip()
             else:
                 k = k_v[0].strip()
                 v = k_v[1].strip()
             add_info_dict[k] = v
 
-        print(add_info_dict)
-
+        fest_result.append(
+                {
+                    'festival_name': festival_name,
+                    'festival_date': festival_date,
+                    'festival_accommodation': festival_accommodation,
+                    'additional_info': add_info_dict
+                }
+            )
 
     except Exception as ex:
         print(ex)
 
-    # finally:
-    break
+    count += 1
+    print(f"Done {count} from {len(set(festival_hrefs))}")
+    time.sleep(1)
 
-
+with open('all_data.json', 'w', encoding='utf-8') as file:
+    json.dump(fest_result, file, indent=4, ensure_ascii=False)
 
