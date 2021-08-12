@@ -39,22 +39,31 @@ def get_data_with_selenium(url=None):
     # options.add_argument("headless")
     # options.headless = True
 
-    try:
+    # try:
+        # driver = webdriver.Chrome(
+        #                 executable_path=r"/usr/bin/chromedriver",
+        #                 options=options)
 
-        driver = webdriver.Chrome(
-                        executable_path=r"/usr/bin/chromedriver",
-                                options=options)
+        # driver.get(url)
+        # time.sleep(5)
 
-        driver.get(url)
-        time.sleep(5)
+        # with open('index_selenium.html', 'w') as file:
+        #     file.write(driver.page_source)
 
-        with open('index_selenium.html', 'w') as file:
-            file.write(driver.page_source)
+    # except Exception as ex:
+        # print(ex)
+    # finally:
+        # driver.quit()
 
-    except Exception as ex:
-        print(ex)
-    finally:
-        driver.quit()
+    with open("index_selenium.html", 'r') as file:
+        src = file.read()
+
+    soup = BeautifulSoup(src, 'lxml')
+    hotels_list = soup.select('.hotel_card_dv')
+    hotels_href = [hotel.select_one('a')['href'] for hotel in hotels_list]
+
+    for i in hotels_href:
+        print(i)
 
 
 def main():
@@ -62,6 +71,7 @@ def main():
     new_url = "https://api.rsrv.me/hc.php?a=hc&most_id=1317&l=ru&sort=most&"
     # get_data(new_url)
     get_data_with_selenium(url=new_url)
+
 
 if __name__ == '__main__':
     main()
