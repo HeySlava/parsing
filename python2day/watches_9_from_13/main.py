@@ -1,4 +1,6 @@
 from bs4 import BeautifulSoup
+import datetime
+import json
 import lxml
 import os
 import requests
@@ -42,6 +44,7 @@ def get_all_pages():
 
 def collect_data():
 
+    cur_date = datetime.datetime.now().strftime("%d_%m_%Y")
     pages = os.listdir('data')
 
     watches = []
@@ -69,6 +72,8 @@ def collect_data():
                 }
             )
 
+    with open(f'data_{cur_date}.json', 'a') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
 
 def main():
     # pages_count = get_all_pages()
