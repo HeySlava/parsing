@@ -1,6 +1,7 @@
 import  requests
 import datetime
 import json
+import time
 
 
 def get_data():
@@ -31,54 +32,55 @@ def get_data():
     for i in range(1, page_count + 1):
 
         url =f"https://roscarservis.ru/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&PAGEN_1={i}"
-    r = requests.get(url=url, headers=headers)
+        r = requests.get(url=url, headers=headers)
 
-    data = r.json()
-    items = data['items']
+        data = r.json()
+        items = data['items']
 
-    possible_stories = ['discountStores', 'fortochkiStores', 'commonStores']
-    for item in items:
+        possible_stories = ['discountStores', 'fortochkiStores', 'commonStores']
+        for item in items:
 
-        total_amount = 0
+            total_amount = 0
 
-        item_name = item['name']
-        item_price = item['price']
-        item_img = f"https://roscarservis.ru{item['imgSrc']}"
-        item_url = "https://roscarservis.ru" + item['url']
+            item_name = item['name']
+            item_price = item['price']
+            item_img = f"https://roscarservis.ru{item['imgSrc']}"
+            item_url = "https://roscarservis.ru" + item['url']
 
-        stores = []
-        for ps in possible_stories:
-            if ps in item:
-                if item[ps] is None or len(item[ps]):
-                    continue
-                else:
-                    for store in item[ps]:
-                        store_name = store["STORE_NAME"]
-                        store_price = store["PRICE"]
-                        store_amount = store['AMOUNT']
-                        total_amount += int(store_amount)
+            stores = []
+            for ps in possible_stories:
+                if ps in item:
+                    if item[ps] is None or len(item[ps]):
+                        continue
+                    else:
+                        for store in item[ps]:
+                            store_name = store["STORE_NAME"]
+                            store_price = store["PRICE"]
+                            store_amount = store['AMOUNT']
+                            total_amount += int(store_amount)
 
-                        stores.append(
-                                {
-                                    "store_name": store_name,
-                                    "store_price": store_price,
-                                    "store_amount": store_amount
-                                }
-                            )
+                            stores.append(
+                                    {
+                                        "store_name": store_name,
+                                        "store_price": store_price,
+                                        "store_amount": store_amount
+                                    }
+                                )
 
-            data_list.apeend(
-                    {
-                        "name": item_name,
-                        "price": item_price,
-                        "url": item_url,
-                        "item_img": item_img,
-                        "total_amount": total_amount
-                    }
-                )
+                data_list.append(
+                        {
+                            "name": item_name,
+                            "price": item_price,
+                            "url": item_url,
+                            "item_img": item_img,
+                            "total_amount": total_amount
+                        }
+                    )
 
-    cur_time = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M")
+        cur_time = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M")
 
         print(f"[INFO] Done {i} / {page_count}")
+        time.sleep(1)
 
     with open(f"data_{cur_time}.json", "w") as file:
         json.dump(r.json(), file, indent=4, ensure_ascii=False)
