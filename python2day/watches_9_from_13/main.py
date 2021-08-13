@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import csv
 import datetime
 import json
 import lxml
@@ -47,6 +48,16 @@ def collect_data():
     cur_date = datetime.datetime.now().strftime("%d_%m_%Y")
     pages = os.listdir('data')
 
+    with open(f"data_{cur_date}.csv", "w") as file:
+        writer = csv.writer(file)
+        writer.writerow(
+                (
+                    "Артикул",
+                    "Ссылка",
+                    "Цена"
+                )
+            )
+
     watches = []
     data = []
     for page in pages:
@@ -72,7 +83,17 @@ def collect_data():
                 }
             )
 
-    with open(f'data_{cur_date}.json', 'a') as file:
+        with open(f"data_{cur_date}.csv", "a") as file:
+            writer = csv.writer(file)
+            writer.writerow(
+                    (
+                        article,
+                        price,
+                        href
+                    )
+                )
+
+    with open(f'data_{cur_date}.json', 'w') as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
 
 def main():
