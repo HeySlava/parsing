@@ -1,0 +1,74 @@
+{
+    "pageUrl": "/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&PAGEN_1=123",
+    "items": [
+        {
+            "isNew": false,
+            "props": [],
+            "type": "tires",
+            "isPromo": false,
+            "amount": 4,
+            "season": "Летние",
+            "price": 17240,
+            "name": "285/40 R21  S35A Yokohama 109V TL",
+            "productId": 106238,
+            "sectionId": 7278,
+            "imgSrc": "/local/templates/.default/src/img/Tires_no-image.jpg",
+            "url": "/catalog/legkovye/28540-r21-s35a-yokohama-109v-tl62168/",
+            "promo": [],
+            "discountStores": [],
+            "fortochkiStores": [],
+            "commonStores": [
+                {
+                    "STORE_ID": "158",
+                    "PRODUCT_ID": "106238",
+                    "AMOUNT": "4",
+                    "PRODUCT_XML_ID": "62168",
+                    "STORE_XML_ID": "351",
+                    "STORE_NAME": "Оптовый Склад",
+                    "PRICE": "17240.00",
+                    "PRICE_ID": "9"
+                }
+            ],
+            "initial": {
+                "brandCode": "393",
+                "vendorCode": "R4107"
+            }
+        },
+        {
+            "isNew": false,
+            "props": [],
+            "type": "tires",
+            "isPromo": false,
+            "amount": 12,
+            "season": "Летние",
+            "price": 17900,
+            "name": "315/35 R21  S35A Yokohama 111V TL",
+            "productId": 136070,
+            "sectionId": 7278,
+            "imgSrc": "/local/templates/.default/src/img/Tires_no-image.jpg",
+            "url": "/catalog/legkovye/31535-r21-s35a-yokohama-111v-tl62150/",
+            "promo": [],
+            "discountStores": [],
+            "fortochkiStores": [],
+            "commonStores": [
+                {
+                    "STORE_ID": "158",
+                    "PRODUCT_ID": "136070",
+                    "AMOUNT": "12",
+                    "PRODUCT_XML_ID": "62150",
+                    "STORE_XML_ID": "351",
+                    "STORE_NAME": "Оптовый Склад",
+                    "PRICE": "17900.00",
+                    "PRICE_ID": "9"
+                }
+            ],
+            "initial": {
+                "brandCode": "393",
+                "vendorCode": "R4108"
+            }
+        }
+    ],
+    "navString": "<!-- pagination -->\n<div class=\"pagination\">\n\t\t\t<a href=\"/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&amp;PAGEN_1=\" class=\"pagination__arrow pagination__arrow_left\">\n\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 10856 7374\">\n\t\t\t<path d=\"M10638 1561l-4346 5232c-1,0 -2,1 -2,1 -62,136 -147,264 -274,364 -431,338 -1060,272 -1407,-149l-4388 -5320c-346,-420 -278,-1034 152,-1372 430,-338 1060,-270 1405,148l3601 4367 3716 -4473c343,-414 967,-479 1392,-147 426,332 493,936 151,1349z\"/>\n\t\t</svg>\n\t\t\t</a>\n\t\n\t\t\t<a class=\"pagination__page\" href=\"/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&amp;\">1</a>\n\t\t\t\t<span class=\"pagination__page pagination__page_dots\">...</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"pagination__page\" href=\"/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&amp;PAGEN_1=119\">119</a>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"pagination__page\" href=\"/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&amp;PAGEN_1=120\">120</a>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"pagination__page\" href=\"/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&amp;PAGEN_1=121\">121</a>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"pagination__page\" href=\"/catalog/legkovye/?form_id=catalog_filter_form&filter_mode=params&sort=asc&filter_type=tires&arCatalogFilter_458_1500340406=Y&set_filter=Y&arCatalogFilter_463=668736523&amp;PAGEN_1=122\">122</a>\n\t\t\t\t\t\t\t\t\t\t\n\t\n\n\t\t\t<span class=\"pagination__page pagination__page_active\">123</span>\n\t\n\t\t\t<span class=\"pagination__arrow pagination__arrow_right\">\n\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 10856 7374\">\n\t\t\t<path d=\"M10638 1561l-4346 5232c-1,0 -2,1 -2,1 -62,136 -147,264 -274,364 -431,338 -1060,272 -1407,-149l-4388 -5320c-346,-420 -278,-1034 152,-1372 430,-338 1060,-270 1405,148l3601 4367 3716 -4473c343,-414 967,-479 1392,-147 426,332 493,936 151,1349z\"/>\n\t\t</svg>\n\t\t\t</span>\n\t</div>\n<!-- /pagination -->\n",
+    "totalCount": "1466",
+    "pageCount": 123
+}

@@ -67,15 +67,15 @@ def get_data():
                                     }
                                 )
 
-                data_list.append(
-                        {
-                            "name": item_name,
-                            "price": item_price,
-                            "url": item_url,
-                            "item_img": item_img,
-                            "total_amount": total_amount
-                        }
-                    )
+            data_list.append(
+                    {
+                        "name": item_name,
+                        "price": item_price,
+                        "url": 'https://roscarservis.ru' + item_url,
+                        "item_img": 'https://roscarservis.ru' + item_img,
+                        "total_amount": total_amount
+                    }
+                )
 
         cur_time = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M")
 
