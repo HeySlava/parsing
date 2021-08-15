@@ -1,10 +1,13 @@
 from fake_useragent import UserAgent
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from vk_auth  import login, password
+from vk_auth  import login_password
 import random
 import time
 import pickle
+
+
+login, password = random.choice(login_password)
 
 options = webdriver.ChromeOptions()
 useragent = UserAgent().random
@@ -15,12 +18,11 @@ driver = webdriver.Chrome(
         options=options
 )
 
-# link = 'https://prodoctorov.ru/podolsk/lpu/34291-zhemchuzhina-podolya/otzivi/'
 link = 'https://vk.com/'
 
 try:
-    # driver.get(link)
-    # time.sleep(1)
+    driver.get(link)
+    time.sleep(1)
 
     # email_input = driver.find_element_by_id('index_email')
     # email_input.clear()
