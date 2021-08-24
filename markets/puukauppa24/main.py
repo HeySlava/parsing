@@ -73,11 +73,166 @@ def get_city_page():
             with open(f'data/city_pages/{city}.html', 'w') as file:
                 file.write(r.text)
 
-            print(f'[INFO] Done {count}/{total}')
-            # time.sleep(0.15)
+            print(f'[INFO] City {count}/{total}')
+            time.sleep(0.25)
 
         with open(f'data/city_pages.json', 'w') as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
+
+def get_shops():
+
+    if not os.path.exists('data/shop_pages'):
+        os.mkdir('data/shop_pages')
+
+    # with open(f'data/city_shop_link.csv', 'w') as file:
+    #     writer = csv.writer(file)
+    #     writer.writerow(
+    #             (
+    #                 'City',
+    #                 'Shop',
+    #                 'Link'
+    #             )
+    #         )
+
+    # with open('data/city_pages.json') as file:
+    #     pages = json.load(file)
+
+    # for item in pages:
+
+    #     city_name = item['city_name']
+    #     soup = BeautifulSoup(item['html'], 'lxml')
+
+    #     shop_links = soup.select('.kaupunki a')
+    #     city_shop_link = []
+    #     for shop in shop_links:
+    #         city_shop_link.append(
+    #                 (
+    #                     city_name,
+    #                     shop.text,
+    #                     'https://www.puukauppa24.fi' + shop['href']
+    #                 )
+    #             )
+
+    #         with open(f'data/city_shop_link.csv', 'a') as file:
+    #             writer = csv.writer(file)
+    #             writer.writerow(
+    #                     (
+    #                         city_name,
+    #                         shop.text,
+    #                         'https://www.puukauppa24.fi' + shop['href']
+    #                     )
+    #                 )
+
+    with open('data/city_shop_link.csv') as file:
+        reader = csv.reader(file, delimiter=',')
+        next(reader, None)
+        total = 0
+        for i in reader:
+            total += 1
+
+    with open('data/city_shop_link.csv') as file:
+        reader = csv.reader(file, delimiter=',')
+        next(reader, None)
+
+        count = 0
+        data = []
+        for city, shop, url  in reader:
+            r = requests.get(url=url, headers=headers)
+            soup = BeautifulSoup(r.text, 'lxml')
+            count += 1
+
+            data.append(
+                        {
+                            'city_name': city,
+                            'shop_name': shop,
+                            'html': r.text
+                        }
+                    )
+
+            with open(f'data/shop_pages/{count}.html', 'w') as file:
+                file.write(r.text)
+
+            print(f'[INFO] Shop {count}/{total}')
+            time.sleep(0.25)
+            # break
+
+        with open(f'data/city_shop_pages.json', 'w') as file:
+            json.dump(data, file, indent=4, ensure_ascii=False)
+
+def get_shop_info():
+
+    with open('data/final.csv', 'w') as file:
+        writer = csv.writer(file)
+        writer.writerow(
+                (
+                    "City",
+                    "Shop",
+                    "phone",
+                    "email"
+                )
+            )
+
+    files = os.listdir('data/shop_pages')
+
+    data = []
+    count = 0
+    for file_name in files:
+        with open(f'data/shop_pages/{file_name}') as f:
+            soup = BeautifulSoup(f.read(), 'lxml')
+
+        content = soup.select('.entry-content b')
+
+        info = dict()
+        for name in content:
+            info[name.text.strip()[:-1]] = name.next_element.next_element.strip()
+
+        data.append(info)
+        count += 1
+        if count % 50 == 0:
+            print(f'Final step {count} / {len(files)}')
+
+        # break
+    with open('data/final.json', 'w') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+
+    for item in data:
+
+        if 'Puukaupan nimi' in item:
+            shop_name = item['Puukaupan nimi']
+        else:
+            phone = 'null'
+
+        if 'Sähköpostiosoite' in item:
+            email = item['Sähköpostiosoite']
+        else:
+            email = 'null'
+
+        if 'Puhelinnumero' in item:
+            phone = item['Puhelinnumero']
+
+            if phone.startswith('0'):
+                phone = '+358' + phone[1:]
+        else:
+            phone = 'null'
+
+        if 'Osoite' in item:
+            city_string = item['Osoite']
+            city = city_string.split()[-1]
+        else:
+            city = 'null'
+
+        with open('data/final.csv', 'a') as file:
+            writer = csv.writer(file)
+            writer.writerow(
+                    (
+                        city,
+                        shop_name,
+                        phone,
+                        email
+                    )
+                )
+        # break
+
 
 
 if __name__ == '__main__':
@@ -87,4 +242,6 @@ if __name__ == '__main__':
 
     # get_city_links()
     # get_city_page()
+    # get_shops()
+    get_shop_info()
 
