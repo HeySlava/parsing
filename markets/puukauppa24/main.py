@@ -86,5 +86,5 @@ if __name__ == '__main__':
         }
 
     # get_city_links()
-    get_city_page()
+    # get_city_page()
 
