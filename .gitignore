@@ -7,3 +7,4 @@ data/
 vk_auth.py
 *_cookies
 *venv/
+bitcoin_bot_token.py
