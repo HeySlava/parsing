@@ -183,5 +183,6 @@ for section in sections:
             elements.append(element)
         time.sleep(0.5)
 
-with open('/home/vyacheslav/parsing/samurai/samurai.json', 'w', encoding='utf-8') as fs:
-    json.dump(elements, fs)
+with open('samurai.json', 'w', encoding='utf-8') as file:
+    json.dump(elements, file, indent=4, ensure_ascii=False)
+
