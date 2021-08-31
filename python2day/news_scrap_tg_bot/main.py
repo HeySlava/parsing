@@ -5,7 +5,6 @@ import requests
 
 from bs4 import BeautifulSoup
 
-
 headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
     }
@@ -32,7 +31,7 @@ def get_first_news():
         json.dump(title_link_img_list, file, indent=4, ensure_ascii=False)
 
 
-def check_news_update():
+# def check_news_update():
 
 def main():
     get_first_news()
