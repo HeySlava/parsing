@@ -32,7 +32,7 @@ def get_first_news():
         json.dump(title_link_img_list, file, indent=4, ensure_ascii=False)
 
 
-def check_news_update():
+# def check_news_update():
 
 def main():
     get_first_news()
