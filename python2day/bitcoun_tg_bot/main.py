@@ -35,7 +35,7 @@ def telegram_bot(token):
                         "Damn...Something was wrong"
                     )
         else:
-             bot.send_message(message.chat.id, "Check your message")
+             bot.send_message(message.chat.id, "This bot support only 'price' message")
     bot.polling()
 
 if __name__ == '__main__':

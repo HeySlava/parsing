@@ -2,9 +2,9 @@ import json
 import lxml
 import os
 import requests
+import codecs
 
 from bs4 import BeautifulSoup
-
 
 headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
@@ -16,6 +16,7 @@ def get_first_news():
 
     url = 'https://www.bellingcat.com/category/resources/case-studies/'
     r = requests.get(url=url, headers=headers)
+    r.encoding = 'utf-8'
     soup = BeautifulSoup(r.text, 'lxml')
 
     article_cards = soup.select('.news_item')
@@ -28,7 +29,7 @@ def get_first_news():
             for item in article_cards
         }
 
-    with open("data/news_dict.json", "w") as file:
+    with codecs.open("data/news_dict.json", "w", encoding='utf-8') as file:
         json.dump(title_link_img_list, file, indent=4, ensure_ascii=False)
 
 
