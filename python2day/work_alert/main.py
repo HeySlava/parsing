@@ -16,7 +16,7 @@ def get_data():
 
         options = webdriver.ChromeOptions()
         # options.add_argument("--no-sandbox")
-        # options.add_argument("headless")
+        options.add_argument("headless")
         options.add_argument("--disable-blink-features=AutomationControlled")
 
         driver = webdriver.Chrome(
@@ -38,6 +38,71 @@ def get_data():
         current_time = int(time.time())
         data = []
         projects = driver.find_elements_by_css_selector('.b-post__grid')
+        for project in projects:
+            project_id = project.find_element_by_css_selector('a').get_attribute('name')
+            project_title = project.find_element_by_css_selector('a').text
+            project_href = "https://www.fl.ru" + \
+                    project.find_element_by_css_selector('a').get_attribute('href')
+            project_price = project.find_element_by_css_selector('.b-post__price').text
+            project_descr = project.find_element_by_css_selector('.b-post__txt').text
+
+            data.append(
+                    {
+                        'id': project_id,
+                        'items': {
+                            'title': project_title,
+                            'href': project_href,
+                            'description': project_descr,
+                            'price': project_price,
+                            'time': f'{datetime.datetime.now().strftime("%d/%m/%Y %H:%M")}'
+                            
+                        }
+                    }
+                )
+
+        with open('data/posts.json', 'w', encoding='utf-8') as file:
+            json.dump(data, file, indent=4, ensure_ascii=False)
+
+
+def get_list():
+
+    try:
+
+        options = webdriver.ChromeOptions()
+        # options.add_argument("--no-sandbox")
+        options.add_argument("headless")
+        options.add_argument("--disable-blink-features=AutomationControlled")
+
+        driver = webdriver.Chrome(
+                executable_path=r"/usr/bin/chromedriver",
+                options=options
+            )
+
+        link = 'https://www.fl.ru/projects/'
+        
+        driver.get(link)
+        time.sleep(1)
+
+        driver.find_element_by_css_selector('#comboe').send_keys('Программирование')
+        time.sleep(0.5)
+        driver.find_element_by_css_selector('#comboe').send_keys('парсинг данных')
+        time.sleep(1)
+        driver.find_element_by_css_selector('.b-buttons .b-button').click()
+        time.sleep(1)
+        projects = driver.find_elements_by_css_selector('.b-post__grid')
+        projects_title = [project.find_element_by_css_selector('a').text for project in projects]
+        return zip(projects_title, projects)
+    finally:
+        driver.quit()
+
+
+
+def save_data(project):
+
+
+def save_data(project):
+        current_time = int(time.time())
+        data = []
         for project in projects:
             project_id = project.find_element_by_css_selector('a').get_attribute('name')
             project_title = project.find_element_by_css_selector('a').text
