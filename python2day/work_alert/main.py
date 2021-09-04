@@ -2,7 +2,7 @@ import json
 import os
 import pickle
 import time
-from datetime import datetime
+import datetime
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
@@ -35,6 +35,7 @@ def get_data():
         time.sleep(1)
         driver.find_element_by_css_selector('.b-buttons .b-button').click()
 
+        current_time = int(time.time())
         data = []
         projects = driver.find_elements_by_css_selector('.b-post__grid')
         for project in projects:
@@ -52,19 +53,15 @@ def get_data():
                             'title': project_title,
                             'href': project_href,
                             'description': project_descr,
-                            'price': project_price
+                            'price': project_price,
+                            'time': f'{datetime.datetime.now().strftime("%d/%m/%Y %H:%M")}'
+                            
                         }
                     }
                 )
-            print(data)
-            break
 
-
-        html = driver.page_source
-
-        html = driver.page_source
-        with open('data/html.html', 'w') as file:
-            file.write(html)
+        with open('data/posts.json', 'w', encoding='utf-8') as file:
+            json.dump(data, file, indent=4, ensure_ascii=False)
 
     finally:
         driver.quit()
