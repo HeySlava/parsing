@@ -81,10 +81,12 @@ def update_posts(dict_posts):
         for item in dict_posts:
             if item['id'] not in orders_id:
                 news.append(item)
-        print(len(news))
+        local_dict += news
 
-        # with open('data/posts.json', 'w') as file:
-        #     json.dump(local_dict, file, indent=4, ensure_ascii=False)
+        with open('data/posts.json', 'w') as file:
+            json.dump(local_dict, file, indent=4, ensure_ascii=False)
+
+        return news
 
 
 if __name__ == '__main__':
