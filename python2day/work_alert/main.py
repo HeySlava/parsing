@@ -16,7 +16,7 @@ def get_data():
 
         options = webdriver.ChromeOptions()
         # options.add_argument("--no-sandbox")
-        # options.add_argument("headless")
+        options.add_argument("headless")
         options.add_argument("--disable-blink-features=AutomationControlled")
 
         driver = webdriver.Chrome(
@@ -65,26 +65,26 @@ def get_data():
         return data
 
 
-def update_posts(dict):
+def update_posts(dict_posts):
 
-    if not os.path.isfile('data/posts.json'):
+    if not os.path.exists('data/posts.json'):
         with open('data/posts.json', 'w') as file:
-            json.dump(data, file, indent=4, ensure_ascii=False)
+            json.dump(dict_posts, file, indent=4, ensure_ascii=False)
 
     else:
+
         with open('data/posts.json') as file:
             local_dict = json.load(file)
 
-        new_dict = []
-        for item in dict:
-            if item not in local_dict:
-                new_dict.append(item)
+        orders_id = [i['id'] for i in local_dict]
+        news = []
+        for item in dict_posts:
+            if item['id'] not in orders_id:
+                news.append(item)
+        print(len(news))
 
-        local_dict.extend(dict)
-        with open('data/posts.json', 'w') as file:
-            json.dump(local_dict, file, indent=4, ensure_ascii=False)
-    
-        print(new_dict)
+        # with open('data/posts.json', 'w') as file:
+        #     json.dump(local_dict, file, indent=4, ensure_ascii=False)
 
 
 if __name__ == '__main__':
