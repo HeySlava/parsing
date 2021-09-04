@@ -3,6 +3,7 @@ import json
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Text
 from aiogram.utils.markdown import hbold, hunderline, hcode, hlink
+from freelance import update_posts, get_data
 from data.tg_auth import token
 
 
@@ -33,22 +34,17 @@ async def random(message: types.Message):
     pass
 
 
-# async def news_every_minute():
-#     while True:
+async def news_every_minute():
+    while True:
 
-#         with open('data/news_dict.json', encoding='utf-8') as file:
-#             news = json.load(file)
+        new_posts = update_posts(get_data())
+        for item in new_posts:
+            await message.answer(f"{item['items']}")
 
-#         for k, v in news.items():
-#             title, link = v
-#             # link = f"{hlink(title, link)}"
-#             await bot.send_message(user_id, f"{hlink(title, link)}")
-
-#         await asyncio.sleep(20)
+        await asyncio.sleep(300)
 
 if __name__ == '__main__':
-    # loop = asyncio.get_event_loop()
-    # loop.create_task(news_every_minute())
-    # executor.start_polling(dp)
+    loop = asyncio.get_event_loop()
+    loop.create_task(news_every_minute())
     executor.start_polling(dp)
 

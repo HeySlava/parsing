@@ -11,12 +11,20 @@ def get_data():
 
     if not  os.path.exists('data'):
         os.mkdir('data')
+
+    headers = {
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "X-Is-Ajax-Request": "X-Is-Ajax-Request",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36"
+        }
     
     try:
 
         options = webdriver.ChromeOptions()
+        # options.add_argument('User-Agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"')
         # options.add_argument("--no-sandbox")
-        options.add_argument("headless")
+        # options.add_argument("headless")
         options.add_argument("--disable-blink-features=AutomationControlled")
 
         driver = webdriver.Chrome(
@@ -27,7 +35,7 @@ def get_data():
         link = 'https://www.fl.ru/projects/'
         
         driver.get(link)
-        time.sleep(1)
+        time.sleep(200)
 
         driver.find_element_by_css_selector('#comboe').send_keys('Программирование')
         time.sleep(0.5)
@@ -61,9 +69,10 @@ def get_data():
                     }
                 )
 
+        return data
+
     finally:
         driver.quit()
-        return data
 
 
 def update_posts(dict_posts):
