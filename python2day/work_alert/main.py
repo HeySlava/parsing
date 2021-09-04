@@ -41,7 +41,7 @@ def get_data():
         for project in projects:
             project_id = project.find_element_by_css_selector('a').get_attribute('name')
             project_title = project.find_element_by_css_selector('a').text
-            project_href = "https://www.fl.ru" + \
+            project_href =  \
                     project.find_element_by_css_selector('a').get_attribute('href')
             project_price = project.find_element_by_css_selector('.b-post__price').text
             project_descr = project.find_element_by_css_selector('.b-post__txt').text
@@ -54,7 +54,8 @@ def get_data():
                             'href': project_href,
                             'description': project_descr,
                             'price': project_price,
-                            'time': f'{datetime.datetime.now().strftime("%d/%m/%Y %H:%M")}'
+                            'time': f'{datetime.datetime.now().strftime("%d/%m/%Y %H:%M")}',
+                            'unix': int(time.time())
                             
                         }
                     }
