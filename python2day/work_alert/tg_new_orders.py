@@ -25,8 +25,7 @@ async def random(message: types.Message):
 
     with open('data/posts.json', encoding='utf-8') as file:
         news = json.load(file)
-    news = sorted(news, reverse=True, key=lambda news: news['items']['unix'])
-    for item in news[:5]:
+    for item in news[5::-1]:
         time = item['items']['time']
         title = item['items']['title']
         href = item['items']['href']
@@ -38,7 +37,6 @@ async def random(message: types.Message):
                 f"{description}\n"\
                 f"{href}\n"\
                     )
-
 
 
 @dp.message_handler(Text(equals="Last 5 from youdo.com"))
@@ -65,7 +63,7 @@ async def news_every_minute():
                         f"{href}\n"\
                             )
 
-        await asyncio.sleep(60* 30)
+        await asyncio.sleep(60* 60)
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()

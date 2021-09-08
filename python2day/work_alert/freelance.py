@@ -86,15 +86,14 @@ def update_posts(dict_posts):
         with open('data/posts.json') as file:
             local_dict = json.load(file)
 
-        orders_id = [i['id'] for i in local_dict]
+        old_orders_id = [i['id'] for i in local_dict]
         news = []
         for item in dict_posts:
-            if item['id'] not in orders_id:
+            if item['id'] not in old_orders_id:
                 news.append(item)
-        local_dict += news
 
         with open('data/posts.json', 'w') as file:
-            json.dump(local_dict, file, indent=4, ensure_ascii=False)
+            json.dump([*news, *local_dict], file, indent=4, ensure_ascii=False)
 
         return news
 
