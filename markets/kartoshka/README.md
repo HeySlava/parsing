@@ -15,10 +15,16 @@
 
 ### Общий вид магазина
 
-![](general_view.png)
+![](image/general_view.png)
 
 ### Пример продукта
 <p align="center">
-  <img width="600" height="500" src="product_view.png">
+  <img width="600" height="500" src="image/product_view.png">
+</p>
+
+### Json файл
+
+<p align="left">
+  <img width="400" height="400" src="image/result.png">
 </p>
 
