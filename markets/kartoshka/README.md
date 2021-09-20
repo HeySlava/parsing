@@ -13,13 +13,12 @@
 - описание
 - вес
 
-
 ### Общий вид магазина
 
 ![](general_view.png)
 
-
 ### Пример продукта
-<img src="product_view.png" width="500" height="500" />
+<p align="center">
+  <img width="600" height="500" src="product_view.png">
+</p>
 
-![](product_view.png =500x500)
