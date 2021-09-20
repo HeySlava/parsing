@@ -16,7 +16,7 @@
 - [Тула суши](https://tula-sushi.ru/). Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/tula_sushi)
 
 ### Для личных целей
-- [Бот](https://github.com/HeySlava/parsing/tree/main/python2day/work_alert) для телеграмма, который высылает новые заказы с [биржы фриланса](https://www.fl.ru/)
+- [Бот](https://github.com/HeySlava/parsing/tree/main/python2day/work_alert) для телеграма, который высылает новые заказы с [биржы фриланса](https://www.fl.ru/)
 - Сбор [отзывов](https://github.com/HeySlava/parsing/tree/main/markets/rewiews_nastya) с сайта [продокторов](https://prodoctorov.ru/podolsk/lpu/34291-zhemchuzhina-podolya/otzivi/)
 
 ### Учебные материалы
