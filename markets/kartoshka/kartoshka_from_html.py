@@ -88,18 +88,21 @@ def get_additiions(sp):
     '''
     Return some topping if it is possible
     '''
+    pass
 
 
 def get_is_hot(string):
     '''
     Return True or None
     '''
+    pass
 
 
 def get_is_hit(string):
     '''
     Return True or None
     '''
+    pass
 
 
 link = 'https://www.kartoshka.com/menu'
@@ -136,5 +139,6 @@ for item in items:
 
     elements.append(element)
 
-with open('/home/vyacheslav/parsing/kartoshka/kartoshka.json', 'w', encoding='utf-8') as fs:
-    json.dump(elements, fs)
+with open('kartoshka.json', 'w', encoding='utf-8') as file:
+    json.dump(elements, file, indent=4, ensure_ascii=False)
+
