@@ -25,6 +25,27 @@ def get_data():
 
         books_on_page = soup.select('.products-table__body tr')
 
+        for book in books_on_page:
+
+            try:
+                name_book = book.select_one('.book-qtip').text.strip()
+                link_book = book.select_one('.book-qtip')['href']
+            except:
+                name_book = 'There is not name'
+                link_book = 'There is no link'
+
+            try:
+                name_book = book.select_one('.book-qtip').text.strip()
+            except:
+                name_book = 'There is not name'
+
+            print()
+            print(name_book)
+            print(link_book)
+            print()
+
+        break
+
 
 def main():
     get_data()
