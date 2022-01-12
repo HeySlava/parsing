@@ -1,11 +1,10 @@
-venv/
-vk/
+venv
+vk
 .idea/
 chromedriver
-__pycache__/
-data/
+__pycache__
+data
 89307984123_cookies
 vk_auth.py
 *_cookies
-/* bitcoin_bot_token.py */
 *token*.py
