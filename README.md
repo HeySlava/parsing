@@ -9,7 +9,7 @@
 - [Крошка картошка](https://www.kartoshka.com/menu/#!section=potatoes-xl).
   Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/kartoshka) 
   [README](https://github.com/HeySlava/parsing/tree/main/markets/kartoshka#readme)
-- [KFC](https://www.kfc.ru/). Ссылка на [репозиторий. selenium](https://github.com/HeySlava/parsing/tree/main/markets/kfc)
+- [KFC](https://www.kfc.ru/). Ссылка на [репозиторий](https://github.com/HeySlava/parsing/tree/main/markets/kfc) (bs4+selenium)
 - [Оригами суши](https://origamisushi.ru/). Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/origamisushi)
 - [Roll well](https://www.rollwell.ru/). Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/rollwell)
 - [Самурай Тула](http://samurai-tula.ru/). Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/samurai)
