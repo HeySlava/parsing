@@ -6,7 +6,9 @@
 ### Агрегатор магазинов и доставок.
 
 Для местого сайта агрегатора общепитов требовалось собрать всю информацию о продуктах, представленных на различных сайтах. Часть этих сайтов:
-- [Крошка картошка](https://www.kartoshka.com/menu/#!section=potatoes-xl). Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/kartoshka#readme)
+- [Крошка картошка](https://www.kartoshka.com/menu/#!section=potatoes-xl).
+  Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/kartoshka) 
+  [README](https://github.com/HeySlava/parsing/tree/main/markets/kartoshka#readme)
 - [KFC](https://www.kfc.ru/). Ссылка на [репозиторий. selenium](https://github.com/HeySlava/parsing/tree/main/markets/kfc)
 - [Оригами суши](https://origamisushi.ru/). Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/origamisushi)
 - [Roll well](https://www.rollwell.ru/). Ссылка на [репозиторий.](https://github.com/HeySlava/parsing/tree/main/markets/rollwell)
